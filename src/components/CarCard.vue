@@ -1,4 +1,5 @@
 <template>
+  <!-- NOTE our car details page has a required parameter that must be supplied in the router-link. We assgin that a value with the params object here -->
   <router-link :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
     <img :src="carProp.imgUrl" class="img-fluid" :alt="carProp.make + ' ' + carProp.model" role="button">
     <div class="car-title">

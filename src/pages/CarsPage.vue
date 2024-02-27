@@ -18,6 +18,8 @@
         <div class="car-title">
           <p class="fs-4 mb-1 ms-1">{{ car.make }} {{ car.model }}</p>
         </div> -->
+        <!-- NOTE carProp is the name of our prop, car is the value being passed down for that prop -->
+        <!-- Very similar to parameters and arguments, carProp is the parameter, car is the argument -->
         <CarCard :carProp="car" />
       </div>
     </section>

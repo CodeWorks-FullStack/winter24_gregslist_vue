@@ -1,9 +1,13 @@
 <template>
+  <!-- NOTE submit.prevent prevents default form submission behavior (refreshing the page). shorthand for event.preventDefault() -->
+
+  <!-- NOTE v-if will only render this form if the user is logged in -->
   <form v-if="account.id" @submit.prevent="createCar()">
 
     <div class="mb-3">
       <label for="carMake">Make</label>
 
+      <!-- NOTE v-model creates two-way data binding with the editableCarData object. As soon as the user starts typing in this form, creates a "make" key in the object with a value of the text inside the input field -->
       <input v-model="editableCarData.make" id="carMake" name="make" type="text" required maxlength="500">
     </div>
 
@@ -74,6 +78,7 @@ import { AppState } from '../AppState.js';
 
 export default {
   setup() {
+    // NOTE creates a watchable object that we can bind the values from our input field to using two-way data binding (v-model)
     const editableCarData = ref({})
 
 
@@ -82,8 +87,11 @@ export default {
       account: computed(() => AppState.account),
       async createCar() {
         try {
+          // NOTE replaces the entire pulling values from forms process
           logger.log('creating car', editableCarData.value)
+          // NOTE .value refers to the data stored within the ref object
           await carsService.createCar(editableCarData.value)
+          // NOTE clears the form through two-way data binding (v-model)
           editableCarData.value = {}
         } catch (error) {
           Pop.error(error)
