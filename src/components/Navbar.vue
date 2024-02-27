@@ -17,6 +17,7 @@
           </router-link>
         </li>
         <li>
+          <!-- NOTE router-link works the vue router to handle "page" navigation. "to" is a prop on the router-link component that we assign a value to using binding. We supply an object here with a name that matches whichever route object in our router.js that want to load -->
           <router-link :to="{ name: 'Cars' }" class="btn text-success lighten-30 selectable text-uppercase">
             Cars
           </router-link>
