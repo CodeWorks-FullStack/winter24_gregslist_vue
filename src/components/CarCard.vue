@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 img {
   height: 40vh;
-  width: 40vh;
+  width: 100%;
   border-radius: 16px;
   object-fit: cover;
   object-position: center;
