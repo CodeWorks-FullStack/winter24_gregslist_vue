@@ -6,12 +6,14 @@
       </div>
 
       <div class="col-12">
+        <!-- NOTE car form component, all logic pertaining to creating a car is handled there -->
         <CarForm />
       </div>
     </section>
 
     <section class="row">
       <div v-for="car in cars" :key="car.id" class="col-md-4 mb-3 car-card">
+        <!-- STUB html abstracted to CarCard component -->
         <!-- <img :src="car.imgUrl" class="img-fluid" :alt="car.make + ' ' + car.model" role="button">
         <div class="car-title">
           <p class="fs-4 mb-1 ms-1">{{ car.make }} {{ car.model }}</p>
@@ -30,8 +32,11 @@ import { carsService } from '../services/CarsService.js'
 import { AppState } from '../AppState.js'
 import CarCard from '../components/CarCard.vue';
 import { logger } from '../utils/Logger.js';
+import CarForm from '../components/CarForm.vue';
 export default {
   setup() {
+
+    // NOTE this function is called by the onMounted to retrieve data from API whenever this component is mounted into the view
     async function getCars() {
       try {
         await carsService.getCars();
@@ -40,16 +45,18 @@ export default {
         Pop.error(error);
       }
     }
+
     // NOTE when the page loads!
     onMounted(() => {
-      // console.log('Page is mounted!');
       getCars();
     });
+
     return {
+      // NOTE bring in cars from appstate with listeners attached
       cars: computed(() => AppState.cars),
     };
   },
-  components: { CarCard }
+  components: { CarCard, CarForm }
 }
 </script>
 

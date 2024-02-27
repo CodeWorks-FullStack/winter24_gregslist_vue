@@ -3,6 +3,7 @@ import { Car } from "../models/Car.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
+// REVIEW not much has changed here...
 class CarsService {
   async getCars() {
     const response = await api.get('api/cars')
@@ -18,9 +19,6 @@ class CarsService {
     AppState.activeCar = newCar
   }
 
-  clearAppState() {
-    AppState.activeCar = null
-  }
 
   async destroyCar(carId) {
     const response = await api.delete(`api/cars/${carId}`)
@@ -33,6 +31,10 @@ class CarsService {
     logger.log('CREATED CAR', response.data)
     const newCar = new Car(response.data)
     AppState.cars.push(newCar)
+  }
+
+  clearAppState() {
+    AppState.activeCar = null
   }
 }
 

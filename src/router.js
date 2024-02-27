@@ -16,13 +16,15 @@ const routes = [
     name: 'About',
     component: loadPage('AboutPage')
   },
+  // NOTE adds an additional route that can be accessed by the browser
   {
-    path: '/cars',
-    name: 'Cars',
-    component: loadPage('CarsPage')
+    path: '/cars', // what the url will look like, ex: 'http://localhost8080/#/cars'
+    name: 'Cars', // name for our route, used with router-links, useRoute, and useRouter
+    component: loadPage('CarsPage') // which .vue page file to load out of the pages folder when the url matches the path in this object
   },
   {
-    path: '/cars/:carId',
+    // NOTE the :carId allows us to set up a route parameter, so a variable can be put into the url and accessed. 
+    path: '/cars/:carId', // ex: 'http://localhost8080/#/cars/6463c9ecafbe13b729b64ae7' will load the carDetails page, and we can target the id from the route parameters for a network request
     name: 'CarDetails',
     component: loadPage('CarDetailsPage')
   },

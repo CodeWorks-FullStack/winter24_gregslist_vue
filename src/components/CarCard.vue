@@ -14,13 +14,16 @@ import { AppState } from '../AppState.js';
 import { Car } from '../models/Car.js';
 
 export default {
+  // NOTE props allow us to pass down data from a parent component (CarsPage) to this component
   props: {
-    carProp: { type: Car, required: true }
+    carProp: {
+      type: Car, // type of data being passed down from parent
+      required: true // throws an error in console if no prop is passed down from parent
+    }
   },
   setup() {
     return {
-      // NOTE will only bring in first car
-      // car: computed(() => AppState.cars[0])
+      // NOTE nothing computed here, all data is passed down from props
     };
   }
 }
